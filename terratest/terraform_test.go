@@ -15,14 +15,13 @@ func TestTerraformBasicExampleNew(t *testing.T) {
 	t.Parallel()
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
-		TerraformDir: "./example/",
+		TerraformDir: "../example/",
 
 		// Variables to pass to our Terraform code using -var options
 
 		// Disable colors in Terraform commands, so it's easier to parse stdout/stderr
 		NoColor: true,
 	}
-
 
 	// At the end of the test, run `terraform destroy` to clean up any resources that were created
 	defer terraform.Destroy(t, terraformOptions)

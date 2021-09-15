@@ -1,18 +1,18 @@
-Terraform module which creates Ram,Vpc,Ecs and CloudMonitor instance on Alibaba Cloud
+Terraform module which creates RAM,VPC,ECS and CloudMonitor instance on Alibaba Cloud
 
 terraform-alicloud-ram-vpc-ecs-cloudmonitor
 ---
 
 English | [简体中文](README-CN.md)
 
-This module is used to creates Ram,Vpc,Ecs and CloudMonitor instance.
+This module is used to creates RAM,VPC,ECS and CloudMonitor instance.
 
 These types of resources are supported:
 
 * [alicloud_vpc_instance](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/vpc)
 * [alicloud_ram_instance](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/ram_user)
-* [alicloud_ram_instance](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/instance)
-* [alicloud_ram_instance](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/cms_alarm)
+* [alicloud_ecs_instance](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/instance)
+* [alicloud_cloudmonitor_instance](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/cms_alarm)
 
 
 ## Usage

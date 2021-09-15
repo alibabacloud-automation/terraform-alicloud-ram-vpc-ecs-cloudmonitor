@@ -12,8 +12,8 @@ terraform-alicloud-ram-vpc-ecs-cloudmonitor
 
 * [alicloud_vpc_instance](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/vpc)
 * [alicloud_ram_instance](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/ram_user)
-* [alicloud_ram_instance](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/instance)
-* [alicloud_ram_instance](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/cms_alarm)
+* [alicloud_ecs_instance](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/instance)
+* [alicloud_cloudmonitor_instance](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/cms_alarm)
 
 ## 用法
 
