@@ -1,16 +1,17 @@
 locals {
-  project               = "acs_ecs_dashboard"
-}
-module "ram_user" {
-  source = "terraform-alicloud-modules/ram/alicloud"
-  name = var.ram_user_name
-  create_ram_user_login_profile = var.create_ram_user_login_profile
-  password = var.ram_user_password
-  create_ram_access_key = var.create_ram_access_key
-  is_admin = var.is_admin
+  project = "acs_ecs_dashboard"
 }
 
-#vpc
+module "ram_user" {
+  source                        = "terraform-alicloud-modules/ram/alicloud"
+  name                          = var.ram_user_name
+  create_ram_user_login_profile = var.create_ram_user_login_profile
+  password                      = var.ram_user_password
+  create_ram_access_key         = var.create_ram_access_key
+  is_admin                      = var.is_admin
+}
+
+# VPC
 resource "alicloud_vpc" "default" {
   vpc_name   = var.name
   cidr_block = var.vpc_cidr_block
@@ -49,59 +50,61 @@ resource "alicloud_instance" "default" {
 }
 
 resource "alicloud_cms_alarm" "cpu_utilization" {
-  enabled = var.enable_alarm_rule
-  name    = var.alarm_rule_name
-  project = local.project
-  metric  = "CPUUtilization"
-  dimensions = {
+  enabled            = var.enable_alarm_rule
+  name               = var.alarm_rule_name
+  project            = local.project
+  metric             = "CPUUtilization"
+  dimensions         = {
     instanceId = alicloud_instance.default.id
-    userId=var.alarm_user_id
+    userId     = var.alarm_user_id
   }
   escalations_critical {
-    statistics = var.alarm_rule_statistics
+    statistics          = var.alarm_rule_statistics
     comparison_operator = var.alarm_rule_operator
-    threshold = var.alarm_rule_threshold
-    times = var.alarm_rule_triggered_count
+    threshold           = var.alarm_rule_threshold
+    times               = var.alarm_rule_triggered_count
   }
   period             = var.alarm_rule_period
   contact_groups     = var.alarm_rule_contact_groups
   silence_time       = var.alarm_rule_silence_time
   effective_interval = var.alarm_rule_effective_interval
 }
+
 resource "alicloud_cms_alarm" "intranet_in" {
-  enabled = var.enable_alarm_rule
-  name    = var.alarm_rule_name
-  project = local.project
-  metric  = "IntranetIn"
-  dimensions = {
+  enabled            = var.enable_alarm_rule
+  name               = var.alarm_rule_name
+  project            = local.project
+  metric             = "IntranetIn"
+  dimensions         = {
     instanceId = alicloud_instance.default.id
-    userId=var.alarm_user_id
+    userId     = var.alarm_user_id
   }
   escalations_critical {
-    statistics = var.alarm_rule_statistics
+    statistics          = var.alarm_rule_statistics
     comparison_operator = var.alarm_rule_operator
-    threshold = var.alarm_rule_threshold
-    times = var.alarm_rule_triggered_count
+    threshold           = var.alarm_rule_threshold
+    times               = var.alarm_rule_triggered_count
   }
   period             = var.alarm_rule_period
   contact_groups     = var.alarm_rule_contact_groups
   silence_time       = var.alarm_rule_silence_time
   effective_interval = var.alarm_rule_effective_interval
 }
+
 resource "alicloud_cms_alarm" "intranet_out" {
-  enabled = var.enable_alarm_rule
-  name    = var.alarm_rule_name
-  project = local.project
-  metric  = "IntranetOut"
-  dimensions = {
+  enabled            = var.enable_alarm_rule
+  name               = var.alarm_rule_name
+  project            = local.project
+  metric             = "IntranetOut"
+  dimensions         = {
     instanceId = alicloud_instance.default.id
-    userId=var.alarm_user_id
+    userId     = var.alarm_user_id
   }
   escalations_critical {
-    statistics = var.alarm_rule_statistics
+    statistics          = var.alarm_rule_statistics
     comparison_operator = var.alarm_rule_operator
-    threshold = var.alarm_rule_threshold
-    times = var.alarm_rule_triggered_count
+    threshold           = var.alarm_rule_threshold
+    times               = var.alarm_rule_triggered_count
   }
   period             = var.alarm_rule_period
   contact_groups     = var.alarm_rule_contact_groups

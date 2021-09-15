@@ -1,6 +1,8 @@
 package test
 
 import (
+	"fmt"
+	"github.com/gruntwork-io/terratest/modules/random"
 	"testing"
 
 	"github.com/gruntwork-io/terratest/modules/terraform"
@@ -13,11 +15,16 @@ import (
 
 func TestTerraformBasicExampleNew(t *testing.T) {
 	t.Parallel()
+	ramUserName := fmt.Sprintf("tf-test-%d", random.Random(100, 1000))
+
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
 		TerraformDir: "../example/",
 
 		// Variables to pass to our Terraform code using -var options
+		Vars: map[string]interface{}{
+			"ram_user_name": ramUserName,
+		},
 
 		// Disable colors in Terraform commands, so it's easier to parse stdout/stderr
 		NoColor: true,
@@ -30,8 +37,8 @@ func TestTerraformBasicExampleNew(t *testing.T) {
 	terraform.InitAndApply(t, terraformOptions)
 
 	// Run `terraform output` to get the values of output variables
-	thisEcsInstanceId := terraform.Output(t, terraformOptions, "alicloud_ecs_instance_id")
+	thisRamUserName := terraform.Output(t, terraformOptions, "this_ram_user_name")
 
 	// Verify we're getting back the outputs we expect
-	assert.Equal(t, thisEcsInstanceId, thisEcsInstanceId)
+	assert.Equal(t, thisRamUserName, ramUserName)
 }
