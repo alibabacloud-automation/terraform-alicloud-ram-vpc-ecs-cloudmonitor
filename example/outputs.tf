@@ -11,11 +11,11 @@ output "alicloud_vpc_id" {
 }
 output "this_ram_user_unique_id" {
   description = "The unique ID assigned by alicloud"
-  value = module.example.this_ram_user_unique_id
+  value       = module.example.this_ram_user_unique_id
 }
 output "this_ram_access_key_id" {
   description = "The user's access key id"
-  value = module.example.this_ram_access_key_id
+  value       = module.example.this_ram_access_key_id
 }
 output "this_ram_user_name" {
   description = "The user's name"

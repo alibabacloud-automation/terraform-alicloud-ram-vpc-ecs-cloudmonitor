@@ -5,7 +5,7 @@ terraform-alicloud-ram-vpc-ecs-cloudmonitor
 
 English | [简体中文](README-CN.md)
 
-This module is used to creates RAM,VPC,ECS and CloudMonitor instance.
+This module is used to create RAM,VPC,ECS and CloudMonitor instance.
 
 These types of resources are supported:
 
@@ -14,12 +14,11 @@ These types of resources are supported:
 * [alicloud_ecs_instance](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/instance)
 * [alicloud_cloudmonitor_instance](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/cms_alarm)
 
-
 ## Usage
 
 ```hcl
 module "example" {
-  source            = "terraform-alicloud-modules/ram-vpc-ecs-cloudmonitor/alicloud"
+  source = "terraform-alicloud-modules/ram-vpc-ecs-cloudmonitor/alicloud"
 }
 ```
 
@@ -46,7 +45,7 @@ module "example" {
 If you have any problems when using this module, please opening
 a [provider issue](https://github.com/aliyun/terraform-provider-alicloud/issues/new) and let us know.
 
-**Note:** There does not recommend to open an issue on this repo.
+**Note:** There does not recommend opening an issue on this repo.
 
 ## Authors
 
