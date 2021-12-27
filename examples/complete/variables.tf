@@ -1,83 +1,36 @@
-variable "vpc_id" {
-  description = "The vpc id used to launch several vswitches. If set, the 'create' will be ignored."
+#vpc variable
+variable "name" {
+  description = "The specification of module name."
   type        = string
-  default     = ""
+  default     = "tf-myTerraformTest"
 }
 
-variable "vpc_name" {
-  description = "The vpc name used to launch a new vpc."
+variable "vpc_cidr_block" {
+  description = "The cidr block of VPC information."
   type        = string
-  default     = ""
+  default     = "172.16.0.0/16"
 }
 
-variable "vpc_description" {
-  description = "The vpc description used to launch a new vpc."
+variable "vs_cidr_block" {
+  description = "The cidr block of VSwitch information."
   type        = string
-  default     = ""
+  default     = "172.16.0.0/21"
 }
 
-#about ram variable
+#ram variable
 variable "ram_user_name" {
   description = "The ram user of name."
   type        = string
-  default     = ""
+  default     = "tf_myTest123"
 }
 
 variable "ram_user_password" {
   description = "The ram user of password."
   type        = string
-  default     = ""
+  default     = "password123!Ab"
 }
 
-variable "create_ram_user_login_profile" {
-  description = "The specification of the ram user login profile."
-  type        = bool
-  default     = true
-}
-
-variable "create_ram_access_key" {
-  description = "The specification of the create ram access key."
-  type        = bool
-  default     = true
-}
-
-variable "is_admin" {
-  description = "The specification of the ram user is admin."
-  type        = bool
-  default     = true
-}
-
-variable "region_id" {
-  description = "The specification of regionId."
-  type        = string
-  default     = ""
-}
-
-#############vpc-ecs start
-variable "name" {
-  description = "The specification of ecs name."
-  type        = string
-  default     = ""
-}
-
-variable "existing_instance_id" {
-  description = "The Id of an existing ecs instance. If set, the `create` will be ignored. "
-  type        = string
-  default     = ""
-}
-
-variable "description" {
-  description = "The specification of ecs  description."
-  type        = string
-  default     = ""
-}
-
-variable "instance_type" {
-  description = "The specification of the instance type."
-  type        = string
-  default     = ""
-}
-
+#instance variable
 variable "system_disk_category" {
   description = "The specification of the system disk category."
   type        = string
@@ -87,19 +40,13 @@ variable "system_disk_category" {
 variable "system_disk_name" {
   description = "The specification of the system disk name."
   type        = string
-  default     = ""
+  default     = "system_disk"
 }
 
 variable "system_disk_description" {
   description = "The specification of the system disk description."
   type        = string
-  default     = ""
-}
-
-variable "image_id" {
-  description = "The specification of the image id."
-  type        = string
-  default     = ""
+  default     = "system_disk_description"
 }
 
 variable "internet_max_bandwidth_out" {
@@ -120,32 +67,13 @@ variable "category" {
   default     = "cloud_efficiency"
 }
 
-variable "availability_zone" {
-  description = "The available zone to launch modules."
+variable "description" {
+  description = "The specification of module description."
   type        = string
-  default     = ""
+  default     = "tf-description"
 }
 
-variable "vpc_cidr_block" {
-  description = "The cidr block of VPC information."
-  type        = string
-  default     = "172.16.0.0/16"
-}
-
-variable "vs_cidr_block" {
-  description = "The cidr block of VSwitch information."
-  type        = string
-  default     = "172.16.0.0/21"
-}
-
-# VPC variables
-variable "create" {
-  description = "Whether to create vpc. If false, you can specify an existing vpc by setting 'vpc_id'."
-  type        = bool
-  default     = true
-}
-#############vpc-ecs end
-
+#alicloud_cms_alarm variable
 variable "enable_alarm_rule" {
   description = "Whether to enable alarm rule. Default to true. "
   type        = bool
@@ -155,7 +83,7 @@ variable "enable_alarm_rule" {
 variable "alarm_rule_name" {
   description = "The alarm rule name. "
   type        = string
-  default     = ""
+  default     = "tf-rule-name"
 }
 
 variable "alarm_rule_period" {
@@ -222,10 +150,4 @@ variable "alarm_rule_metric_intranet_out" {
   description = "Name of the monitoring metrics corresponding to a project, such as 'CPUUtilization' and so on. "
   type        = string
   default     = "IntranetOut"
-}
-
-variable "alarm_user_id" {
-  description = "The alarm of userId."
-  type        = string
-  default     = "test"
 }
