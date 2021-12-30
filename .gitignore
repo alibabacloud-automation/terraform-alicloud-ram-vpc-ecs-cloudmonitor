@@ -22,3 +22,4 @@
 *.bak
 *.bk
 .terraform.lock.hcl
+*.secret.txt
