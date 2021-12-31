@@ -7,25 +7,26 @@ variable "vpc_id" {
 variable "vpc_name" {
   description = "The vpc name used to launch a new vpc."
   type        = string
-  default     = "TF-VPC"
+  default     = ""
 }
 
 variable "vpc_description" {
   description = "The vpc description used to launch a new vpc."
   type        = string
-  default     = "A new VPC created by Terrafrom module terraform-alicloud-vpc"
+  default     = ""
 }
 
 #about ram variable
 variable "ram_user_name" {
   description = "The ram user of name."
   type        = string
-  default     = "terraform_test123"
+  default     = ""
 }
+
 variable "ram_user_password" {
   description = "The ram user of password."
   type        = string
-  default     = "password123!Ab"
+  default     = ""
 }
 
 variable "create_ram_user_login_profile" {
@@ -33,11 +34,13 @@ variable "create_ram_user_login_profile" {
   type        = bool
   default     = true
 }
+
 variable "create_ram_access_key" {
   description = "The specification of the create ram access key."
   type        = bool
   default     = true
 }
+
 variable "is_admin" {
   description = "The specification of the ram user is admin."
   type        = bool
@@ -47,14 +50,14 @@ variable "is_admin" {
 variable "region_id" {
   description = "The specification of regionId."
   type        = string
-  default     = "cn-hangzhou"
+  default     = ""
 }
 
 #############vpc-ecs start
 variable "name" {
   description = "The specification of ecs name."
   type        = string
-  default     = "tf-ecs-name"
+  default     = ""
 }
 
 variable "existing_instance_id" {
@@ -66,13 +69,13 @@ variable "existing_instance_id" {
 variable "description" {
   description = "The specification of ecs  description."
   type        = string
-  default     = "tf-ecs-description"
+  default     = ""
 }
 
 variable "instance_type" {
   description = "The specification of the instance type."
   type        = string
-  default     = "ecs.n4.large"
+  default     = ""
 }
 
 variable "system_disk_category" {
@@ -84,25 +87,31 @@ variable "system_disk_category" {
 variable "system_disk_name" {
   description = "The specification of the system disk name."
   type        = string
-  default     = "system_disk"
+  default     = ""
 }
 
 variable "system_disk_description" {
   description = "The specification of the system disk description."
   type        = string
-  default     = "system_disk_description"
+  default     = ""
 }
 
 variable "image_id" {
   description = "The specification of the image id."
   type        = string
-  default     = "ubuntu_18_04_64_20G_alibase_20190624.vhd"
+  default     = ""
 }
 
 variable "internet_max_bandwidth_out" {
   description = "The specification of the internet max bandwidth out."
   type        = number
   default     = 10
+}
+
+variable "data_disks_name" {
+  description = "The name of the data disk."
+  type        = string
+  default     = ""
 }
 
 variable "ecs_size" {
@@ -117,23 +126,30 @@ variable "category" {
   default     = "cloud_efficiency"
 }
 
+variable "encrypted" {
+  description = "Encrypted the data in this disk."
+  type        = bool
+  default     = false
+}
+
 variable "availability_zone" {
   description = "The available zone to launch modules."
   type        = string
-  default     = "cn-hangzhou-g"
+  default     = ""
 }
 
 variable "vpc_cidr_block" {
   description = "The cidr block of VPC information."
   type        = string
-  default     = "192.168.1.0/24"
+  default     = "172.16.0.0/16"
 }
 
 variable "vs_cidr_block" {
   description = "The cidr block of VSwitch information."
   type        = string
-  default     = "192.168.1.0/24"
+  default     = "172.16.0.0/21"
 }
+
 # VPC variables
 variable "create" {
   description = "Whether to create vpc. If false, you can specify an existing vpc by setting 'vpc_id'."
@@ -141,7 +157,6 @@ variable "create" {
   default     = true
 }
 #############vpc-ecs end
-
 
 variable "enable_alarm_rule" {
   description = "Whether to enable alarm rule. Default to true. "
@@ -152,7 +167,7 @@ variable "enable_alarm_rule" {
 variable "alarm_rule_name" {
   description = "The alarm rule name. "
   type        = string
-  default     = "tf-rule-name"
+  default     = ""
 }
 
 variable "alarm_rule_period" {
@@ -203,8 +218,26 @@ variable "alarm_rule_effective_interval" {
   default     = "0:00-2:00"
 }
 
+variable "alarm_rule_metric_cpu_utilization" {
+  description = "Name of the monitoring metrics corresponding to a project, such as 'CPUUtilization' and so on. "
+  type        = string
+  default     = "CPUUtilization"
+}
+
+variable "alarm_rule_metric_intranet_in" {
+  description = "Name of the monitoring metrics corresponding to a project, such as 'CPUUtilization' and so on. "
+  type        = string
+  default     = "IntranetIn"
+}
+
+variable "alarm_rule_metric_intranet_out" {
+  description = "Name of the monitoring metrics corresponding to a project, such as 'CPUUtilization' and so on. "
+  type        = string
+  default     = "IntranetOut"
+}
+
 variable "alarm_user_id" {
   description = "The alarm of userId."
   type        = string
-  default     = "test"
+  default     = ""
 }

@@ -2,6 +2,7 @@ locals {
   project = "acs_ecs_dashboard"
 }
 
+#RAM
 module "ram_user" {
   source                        = "terraform-alicloud-modules/ram/alicloud"
   name                          = var.ram_user_name
@@ -41,20 +42,20 @@ resource "alicloud_instance" "default" {
   image_id                   = var.image_id
   internet_max_bandwidth_out = var.internet_max_bandwidth_out
   data_disks {
-    name        = var.name
+    name        = var.data_disks_name
     size        = var.ecs_size
     category    = var.category
     description = var.description
-    encrypted   = true
+    encrypted   = var.encrypted
   }
 }
 
 resource "alicloud_cms_alarm" "cpu_utilization" {
-  enabled            = var.enable_alarm_rule
-  name               = var.alarm_rule_name
-  project            = local.project
-  metric             = "CPUUtilization"
-  dimensions         = {
+  enabled = var.enable_alarm_rule
+  name    = var.alarm_rule_name
+  project = local.project
+  metric  = var.alarm_rule_metric_cpu_utilization
+  dimensions = {
     instanceId = alicloud_instance.default.id
     userId     = var.alarm_user_id
   }
@@ -71,11 +72,11 @@ resource "alicloud_cms_alarm" "cpu_utilization" {
 }
 
 resource "alicloud_cms_alarm" "intranet_in" {
-  enabled            = var.enable_alarm_rule
-  name               = var.alarm_rule_name
-  project            = local.project
-  metric             = "IntranetIn"
-  dimensions         = {
+  enabled = var.enable_alarm_rule
+  name    = var.alarm_rule_name
+  project = local.project
+  metric  = var.alarm_rule_metric_intranet_in
+  dimensions = {
     instanceId = alicloud_instance.default.id
     userId     = var.alarm_user_id
   }
@@ -92,11 +93,11 @@ resource "alicloud_cms_alarm" "intranet_in" {
 }
 
 resource "alicloud_cms_alarm" "intranet_out" {
-  enabled            = var.enable_alarm_rule
-  name               = var.alarm_rule_name
-  project            = local.project
-  metric             = "IntranetOut"
-  dimensions         = {
+  enabled = var.enable_alarm_rule
+  name    = var.alarm_rule_name
+  project = local.project
+  metric  = var.alarm_rule_metric_intranet_out
+  dimensions = {
     instanceId = alicloud_instance.default.id
     userId     = var.alarm_user_id
   }
