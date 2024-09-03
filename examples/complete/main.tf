@@ -42,7 +42,6 @@ module "example" {
   encrypted                  = true
 
   #alicloud_cms_alarm
-  alarm_user_id                     = "test"
   enable_alarm_rule                 = var.enable_alarm_rule
   alarm_rule_name                   = var.alarm_rule_name
   alarm_rule_metric_cpu_utilization = "CPUUtilization"
