@@ -235,9 +235,3 @@ variable "alarm_rule_metric_intranet_out" {
   type        = string
   default     = "IntranetOut"
 }
-
-variable "alarm_user_id" {
-  description = "The alarm of userId."
-  type        = string
-  default     = ""
-}

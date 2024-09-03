@@ -57,7 +57,6 @@ resource "alicloud_cms_alarm" "cpu_utilization" {
   metric  = var.alarm_rule_metric_cpu_utilization
   dimensions = {
     instanceId = alicloud_instance.default.id
-    userId     = var.alarm_user_id
   }
   escalations_critical {
     statistics          = var.alarm_rule_statistics
@@ -78,7 +77,6 @@ resource "alicloud_cms_alarm" "intranet_in" {
   metric  = var.alarm_rule_metric_intranet_in
   dimensions = {
     instanceId = alicloud_instance.default.id
-    userId     = var.alarm_user_id
   }
   escalations_critical {
     statistics          = var.alarm_rule_statistics
@@ -99,7 +97,6 @@ resource "alicloud_cms_alarm" "intranet_out" {
   metric  = var.alarm_rule_metric_intranet_out
   dimensions = {
     instanceId = alicloud_instance.default.id
-    userId     = var.alarm_user_id
   }
   escalations_critical {
     statistics          = var.alarm_rule_statistics
