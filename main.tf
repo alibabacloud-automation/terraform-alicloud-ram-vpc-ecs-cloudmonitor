@@ -4,7 +4,9 @@ locals {
 
 #RAM
 module "ram_user" {
-  source                        = "terraform-alicloud-modules/ram/alicloud"
+  source  = "terraform-alicloud-modules/ram/alicloud"
+  version = "2.1.0"
+
   name                          = var.ram_user_name
   create_ram_user_login_profile = var.create_ram_user_login_profile
   password                      = var.ram_user_password
@@ -14,8 +16,9 @@ module "ram_user" {
 
 # VPC
 resource "alicloud_vpc" "default" {
-  vpc_name   = var.name
-  cidr_block = var.vpc_cidr_block
+  vpc_name    = var.name
+  cidr_block  = var.vpc_cidr_block
+  description = var.vpc_description
 }
 
 resource "alicloud_vswitch" "default" {
@@ -26,8 +29,8 @@ resource "alicloud_vswitch" "default" {
 }
 
 resource "alicloud_security_group" "default" {
-  name   = var.name
-  vpc_id = alicloud_vpc.default.id
+  security_group_name = var.name
+  vpc_id              = alicloud_vpc.default.id
 }
 
 resource "alicloud_instance" "default" {

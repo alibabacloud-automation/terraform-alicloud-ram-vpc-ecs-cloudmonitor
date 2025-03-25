@@ -1,13 +1,16 @@
 output "alicloud_ecs_instance_id" {
-  value = alicloud_instance.default.id
+  description = "The ID of the ecs instance."
+  value       = alicloud_instance.default.id
 }
 
 output "alicloud_vswitch_id" {
-  value = alicloud_vswitch.default.id
+  description = "The ID of the vswitch."
+  value       = alicloud_vswitch.default.id
 }
 
 output "alicloud_vpc_id" {
-  value = alicloud_vpc.default.id
+  description = "The ID of the vpc."
+  value       = alicloud_vpc.default.id
 }
 output "this_ram_user_unique_id" {
   description = "The unique ID assigned by alicloud"

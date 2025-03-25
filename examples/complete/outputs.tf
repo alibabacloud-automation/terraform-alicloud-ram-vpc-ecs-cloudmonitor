@@ -1,13 +1,16 @@
 output "alicloud_ecs_instance_id" {
-  value = module.example.alicloud_ecs_instance_id
+  description = "The ID of the ecs."
+  value       = module.example.alicloud_ecs_instance_id
 }
 
 output "alicloud_vswitch_id" {
-  value = module.example.alicloud_vswitch_id
+  description = "The ID of the vswitch."
+  value       = module.example.alicloud_vswitch_id
 }
 
 output "alicloud_vpc_id" {
-  value = module.example.alicloud_vpc_id
+  description = "The ID of the vpc."
+  value       = module.example.alicloud_vpc_id
 }
 output "this_ram_user_unique_id" {
   description = "The unique ID assigned by alicloud"
