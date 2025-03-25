@@ -1,14 +1,4 @@
-variable "vpc_id" {
-  description = "The vpc id used to launch several vswitches. If set, the 'create' will be ignored."
-  type        = string
-  default     = ""
-}
 
-variable "vpc_name" {
-  description = "The vpc name used to launch a new vpc."
-  type        = string
-  default     = ""
-}
 
 variable "vpc_description" {
   description = "The vpc description used to launch a new vpc."
@@ -47,21 +37,9 @@ variable "is_admin" {
   default     = true
 }
 
-variable "region_id" {
-  description = "The specification of regionId."
-  type        = string
-  default     = ""
-}
-
 #############vpc-ecs start
 variable "name" {
   description = "The specification of ecs name."
-  type        = string
-  default     = ""
-}
-
-variable "existing_instance_id" {
-  description = "The Id of an existing ecs instance. If set, the `create` will be ignored. "
   type        = string
   default     = ""
 }
@@ -150,12 +128,6 @@ variable "vs_cidr_block" {
   default     = "172.16.0.0/21"
 }
 
-# VPC variables
-variable "create" {
-  description = "Whether to create vpc. If false, you can specify an existing vpc by setting 'vpc_id'."
-  type        = bool
-  default     = true
-}
 #############vpc-ecs end
 
 variable "enable_alarm_rule" {
